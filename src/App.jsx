@@ -2,12 +2,17 @@ import { useState, useEffect } from 'react'
 import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
+import Notification from './components/Notification'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
   const [user, setUser] = useState(null)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [notificationMsg, setNotificationMsg] = useState({
+    message: null,
+    type: 'error',
+  })
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
@@ -39,8 +44,16 @@ const App = () => {
       setUser(user)
       setUsername('')
       setPassword('')
-    } catch (error) {
-      console.error(error)
+    } catch (exeption) {
+      setNotificationMsg({
+        message: 'wrong username or password',
+        type: 'error',
+      })
+      setTimeout(() => {
+        setNotificationMsg({
+          message: null,
+        })
+      }, 5000)
     }
   }
 
@@ -57,14 +70,30 @@ const App = () => {
       setTitle('')
       setAuthor('')
       setUrl('')
-    } catch (error) {
-      console.error(error)
+      setNotificationMsg({
+        message: `a new blog ${addedBlogs.title} by ${addedBlogs.author} added`,
+      })
+      setTimeout(() => {
+        setNotificationMsg({
+          message: null,
+        })
+      }, 5000)
+    } catch (exeption) {
+      setNotificationMsg({
+        message: 'An error occured while adding a new blog',
+        type: 'error',
+      })
+      setTimeout(() => {
+        setNotificationMsg({
+          message: null,
+        })
+      }, 5000)
     }
   }
 
   const logout = event => {
     event.preventDefault()
-    window.localStorage.removeItem('loggedBlogappUser')
+    window.localStorage.clear()
     setUser(null)
   }
 
@@ -72,6 +101,10 @@ const App = () => {
     return (
       <div>
         <h2>log in to application</h2>
+        <Notification
+          message={notificationMsg.message}
+          type={notificationMsg.type}
+        />
         <form onSubmit={handleLogin}>
           <div>
             <input
@@ -100,6 +133,10 @@ const App = () => {
   return (
     <div>
       <h2>blogs</h2>
+      <Notification
+        message={notificationMsg.message}
+        type={notificationMsg.type}
+      />
       <div>
         {user.name} logged in
         <button
