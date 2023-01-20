@@ -9,3 +9,7 @@
 ## step 4: Implement notifications that inform the user about successful and unsuccessful operations at the top of the page.
 
 ## step 5: Change the form for creating blog posts so that it is only displayed when appropriate.
+
+## step 5: Change the form for creating blog posts so that it is only displayed when appropriate.
+
+## step 6: Separate the form for creating a new blog into its own component (if you have not already done so), and move all the states required for creating a new blog to this component.

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Blog from './components/Blog'
 import blogService from './services/blogs'
 import loginService from './services/login'
@@ -16,9 +16,6 @@ const App = () => {
     message: null,
     type: 'error',
   })
-  const [title, setTitle] = useState('')
-  const [author, setAuthor] = useState('')
-  const [url, setUrl] = useState('')
 
   useEffect(() => {
     blogService.getAll().then(blogs => setBlogs(blogs))
@@ -60,19 +57,11 @@ const App = () => {
     }
   }
 
-  const addBlogs = async event => {
-    event.preventDefault()
-
+  const addBlogs = async newObject => {
+    blogFormRef.current.toggleVisibility()
     try {
-      const addedBlogs = await blogService.create({
-        title,
-        author,
-        url,
-      })
+      const addedBlogs = await blogService.create(newObject)
       setBlogs(blogs.concat(addedBlogs))
-      setTitle('')
-      setAuthor('')
-      setUrl('')
       setNotificationMsg({
         message: `a new blog ${addedBlogs.title} by ${addedBlogs.author} added`,
       })
@@ -96,9 +85,11 @@ const App = () => {
 
   const logout = event => {
     event.preventDefault()
-    window.localStorage.clear()
+    window.localStorage.removeItem('loggedBlogappUser')
     setUser(null)
   }
+
+  const blogFormRef = useRef()
 
   if (user === null) {
     return (
@@ -137,16 +128,11 @@ const App = () => {
       </div>
 
       <br />
-      <Togglable buttonLabel="new note">
-        <BlogForm
-          handleSubmit={addBlogs}
-          handleTitleChange={({ target }) => setTitle(target.value)}
-          handleAuthorChange={({ target }) => setAuthor(target.value)}
-          handleUrlChange={({ target }) => setUrl(target.value)}
-          title={title}
-          author={author}
-          url={url}
-        />
+      <Togglable
+        buttonLabel="new note"
+        ref={blogFormRef}
+      >
+        <BlogForm addBlog={addBlogs} />
       </Togglable>
 
       {blogs.map(blog => (
