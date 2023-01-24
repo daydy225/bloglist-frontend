@@ -18,4 +18,6 @@
 
 ## step 8: Implement the functionality for the like button. Likes are increased by making an HTTP PUT request to the unique address of the blog post in the backend. 
 
-## step 9: Modify the application to list the blog posts by the number of likes. Sorting the blog posts can be done with the array sort method. 
+## step 9: Modify the application to list the blog posts by the number of likes. Sorting the blog posts can be done with the array sort method.
+## step 10: Add a new button for deleting blog posts. Also, implement the logic for deleting blog posts in the frontend.
+

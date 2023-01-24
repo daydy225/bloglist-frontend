@@ -107,6 +107,24 @@ const App = () => {
     }
   }
 
+  const deleteBlogs = async id => {
+    try {
+      blogService.setToken(user.token)
+      await blogService.deleteBlog(id)
+      setBlogs(blogs.filter(blog => blog.id !== id))
+    } catch (exeption) {
+      setNotificationMsg({
+        message: 'An error occured while deleting a blog',
+        type: 'error',
+      })
+      setTimeout(() => {
+        setNotificationMsg({
+          message: null,
+        })
+      }, 5000)
+    }
+  }
+
   const logout = event => {
     event.preventDefault()
     window.localStorage.removeItem('loggedBlogappUser')
@@ -165,6 +183,7 @@ const App = () => {
           key={blog.id}
           blog={blog}
           update={updateBlogs}
+          deleteBlog={deleteBlogs}
         />
       ))}
     </div>
