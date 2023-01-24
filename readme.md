@@ -17,3 +17,5 @@
 ## step 7: Add a button to each blog list which controls whether all of the details about the blog are shown or not. 
 
 ## step 8: Implement the functionality for the like button. Likes are increased by making an HTTP PUT request to the unique address of the blog post in the backend. 
+
+## step 9: Modify the application to list the blog posts by the number of likes. Sorting the blog posts can be done with the array sort method. 

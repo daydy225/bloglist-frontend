@@ -17,8 +17,13 @@ const App = () => {
     type: 'error',
   })
 
+  const fetchBlogs = async () => {
+    const response = await blogService.getAll()
+    setBlogs(response.sort((a, b) => b.likes - a.likes))
+  }
+
   useEffect(() => {
-    blogService.getAll().then(blogs => setBlogs(blogs))
+    fetchBlogs()
   }, [])
 
   useEffect(() => {
