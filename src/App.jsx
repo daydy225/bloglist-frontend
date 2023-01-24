@@ -60,6 +60,7 @@ const App = () => {
   const addBlogs = async newObject => {
     blogFormRef.current.toggleVisibility()
     try {
+      blogService.setToken(user.token)
       const addedBlogs = await blogService.create(newObject)
       setBlogs(blogs.concat(addedBlogs))
       setNotificationMsg({
@@ -73,6 +74,24 @@ const App = () => {
     } catch (exeption) {
       setNotificationMsg({
         message: 'An error occured while adding a new blog',
+        type: 'error',
+      })
+      setTimeout(() => {
+        setNotificationMsg({
+          message: null,
+        })
+      }, 5000)
+    }
+  }
+
+  const updateBlogs = async (id, newObject) => {
+    try {
+      blogService.setToken(user.token)
+      const updatedBlogs = await blogService.update(id, newObject)
+      setBlogs(blogs.map(blog => (blog.id !== id ? blog : updatedBlogs)))
+    } catch (exeption) {
+      setNotificationMsg({
+        message: 'An error occured while updating a blog',
         type: 'error',
       })
       setTimeout(() => {
@@ -140,6 +159,7 @@ const App = () => {
         <Blog
           key={blog.id}
           blog={blog}
+          update={updateBlogs}
         />
       ))}
     </div>
