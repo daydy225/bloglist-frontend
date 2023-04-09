@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 import axios from 'axios'
 const baseUrl = '/api/blogs'
 let token = null
@@ -35,4 +36,10 @@ const deleteBlog = async id => {
   return response.data
 }
 
-export default { getAll, create, update, deleteBlog, setToken }
+export default {
+  getAll,
+  create,
+  update,
+  deleteBlog,
+  setToken,
+}

@@ -1,6 +1,8 @@
+/* eslint-disable linebreak-style */
 import { useState } from 'react'
+import PropTypes from 'prop-types'
 
-const Blog = ({ blog, update, deleteBlog }) => {
+const Blog = ({ blog, update, deleteBlog, user }) => {
   const [blogVisible, setBlogVisible] = useState(false)
 
   const blogStyle = {
@@ -31,7 +33,7 @@ const Blog = ({ blog, update, deleteBlog }) => {
       <div style={blogVisible ? { display: '' } : { display: 'none' }}>
         <div>{blog.url}</div>
         <div>
-          likes {''}
+          likes
           {blog.likes}{' '}
           <button
             onClick={() => update(blog.id, { ...blog, likes: blog.likes + 1 })}
@@ -40,10 +42,19 @@ const Blog = ({ blog, update, deleteBlog }) => {
           </button>
         </div>
         <div>{blog.user.name}</div>
-        <button onClick={deleteABlog}>remove</button>
+        {blog.user.name === user.name ? (
+          <button onClick={deleteABlog}>remove</button>
+        ) : null}
       </div>
     </div>
   )
+}
+
+Blog.propTypes = {
+  blog: PropTypes.object.isRequired,
+  update: PropTypes.func.isRequired,
+  deleteBlog: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired,
 }
 
 export default Blog

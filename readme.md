@@ -10,14 +10,16 @@
 
 ## step 5: Change the form for creating blog posts so that it is only displayed when appropriate.
 
-## step 5: Change the form for creating blog posts so that it is only displayed when appropriate.
+## step 6: Change the form for creating blog posts so that it is only displayed when appropriate.
 
-## step 6: Separate the form for creating a new blog into its own component (if you have not already done so), and move all the states required for creating a new blog to this component.
+## step 7: Separate the form for creating a new blog into its own component (if you have not already done so), and move all the states required for creating a new blog to this component.
 
-## step 7: Add a button to each blog list which controls whether all of the details about the blog are shown or not. 
+## step 8: Add a button to each blog list which controls whether all of the details about the blog are shown or not. 
 
-## step 8: Implement the functionality for the like button. Likes are increased by making an HTTP PUT request to the unique address of the blog post in the backend. 
+## step 9: Implement the functionality for the like button. Likes are increased by making an HTTP PUT request to the unique address of the blog post in the backend. 
 
-## step 9: Modify the application to list the blog posts by the number of likes. Sorting the blog posts can be done with the array sort method.
-## step 10: Add a new button for deleting blog posts. Also, implement the logic for deleting blog posts in the frontend.
+## step 10: Modify the application to list the blog posts by the number of likes. Sorting the blog posts can be done with the array sort method.
+
+## step 11: Add a new button for deleting blog posts. Also, implement the logic for deleting blog posts in the frontend.
+## step 12: Adding  ESlint and Jest to the bloglist project.
 

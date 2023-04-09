@@ -29,22 +29,25 @@ const App = () => {
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('loggedBlogappUser')
     if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON)
-      setUser(user)
+      const userData = JSON.parse(loggedUserJSON)
+      setUser(userData)
     }
   }, [])
 
   const handleLogin = async event => {
     event.preventDefault()
     try {
-      const user = await loginService.login({
+      const loggedUser = await loginService.login({
         username,
         password,
       })
 
-      window.localStorage.setItem('loggedBlogappUser', JSON.stringify(user))
+      window.localStorage.setItem(
+        'loggedBlogappUser',
+        JSON.stringify(loggedUser),
+      )
 
-      blogService.setToken(user.token)
+      blogService.setToken(loggedUser.token)
 
       setUser(user)
       setUsername('')
@@ -61,7 +64,7 @@ const App = () => {
       }, 5000)
     }
   }
-
+  const blogFormRef = useRef()
   const addBlogs = async newObject => {
     blogFormRef.current.toggleVisibility()
     try {
@@ -91,6 +94,7 @@ const App = () => {
 
   const updateBlogs = async (id, newObject) => {
     try {
+      console.log('updateBlogs', id, newObject)
       blogService.setToken(user.token)
       const updatedBlogs = await blogService.update(id, newObject)
       setBlogs(blogs.map(blog => (blog.id !== id ? blog : updatedBlogs)))
@@ -129,9 +133,8 @@ const App = () => {
     event.preventDefault()
     window.localStorage.removeItem('loggedBlogappUser')
     setUser(null)
+    window.location.reload()
   }
-
-  const blogFormRef = useRef()
 
   if (user === null) {
     return (
@@ -161,10 +164,7 @@ const App = () => {
       />
       <div>
         {user.name} logged in
-        <button
-          type="button"
-          onClick={logout}
-        >
+        <button type="button" onClick={logout}>
           logout
         </button>
       </div>
@@ -184,6 +184,7 @@ const App = () => {
           blog={blog}
           update={updateBlogs}
           deleteBlog={deleteBlogs}
+          user={user}
         />
       ))}
     </div>
