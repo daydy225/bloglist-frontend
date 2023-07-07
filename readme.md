@@ -28,3 +28,7 @@
 ## step 1: Write a test that verifies that the component renders the title and author, but does not render its url or number of likes by default.
 
 ## step 2: Write a test that verifies that the blog’s url and number of likes are shown when the button controlling the shown details has been clicked.
+
+## step 3: Write a test which ensures that if the like button is clicked twice, the event handler the component received as props is called twice.
+
+## step 4: Write a test for the new blog form. The test should check, that the form calls the event handler it received as props with the right details when a new blog is created.
