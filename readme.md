@@ -23,3 +23,6 @@
 ## step 11: Add a new button for deleting blog posts. Also, implement the logic for deleting blog posts in the frontend.
 ## step 12: Adding  ESlint and Jest to the bloglist project.
 
+# Bloglist Tests
+
+## step 1: Write a test that verifies that the component renders the title and author, but does not render its url or number of likes by default.

@@ -40,6 +40,8 @@ module.exports = {
     'no-alert': 0,
     'import/newline-after-import': 'off',
 
+    'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+
     'import/prefer-default-export': 'off',
 
     'no-underscore-dangle': 'off',

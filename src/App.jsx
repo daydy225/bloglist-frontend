@@ -52,6 +52,7 @@ const App = () => {
       setUser(user)
       setUsername('')
       setPassword('')
+      window.location.reload()
     } catch (exeption) {
       setNotificationMsg({
         message: 'wrong username or password',
@@ -97,7 +98,7 @@ const App = () => {
       console.log('updateBlogs', id, newObject)
       blogService.setToken(user.token)
       const updatedBlogs = await blogService.update(id, newObject)
-      setBlogs(blogs.map(blog => (blog.id !== id ? blog : updatedBlogs)))
+      setBlogs(blogs.map(blog => (blog.id === id ? updatedBlogs : blog)))
     } catch (exeption) {
       setNotificationMsg({
         message: 'An error occured while updating a blog',
@@ -190,5 +191,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App
