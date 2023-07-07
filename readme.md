@@ -26,3 +26,5 @@
 # Bloglist Tests
 
 ## step 1: Write a test that verifies that the component renders the title and author, but does not render its url or number of likes by default.
+
+## step 2: Write a test that verifies that the blog’s url and number of likes are shown when the button controlling the shown details has been clicked.
