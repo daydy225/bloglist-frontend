@@ -32,3 +32,6 @@
 ## step 3: Write a test which ensures that if the like button is clicked twice, the event handler the component received as props is called twice.
 
 ## step 4: Write a test for the new blog form. The test should check, that the form calls the event handler it received as props with the right details when a new blog is created.
+
+# bloglist end to end testing
+## step 1: Configure Cypress for your project. Make a test for checking that the application displays the login form by default.
