@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 
 const Notification = ({ message, type }) => {
-  if (message === '') {
+  if (message === null) {
     return null
   }
 
