@@ -126,7 +126,7 @@ const App = () => {
         setNotificationMsg({
           message: null,
         })
-      }, 5000)
+      }, 3000)
     }
   }
 
