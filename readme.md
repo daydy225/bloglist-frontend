@@ -39,3 +39,5 @@
 ## step 2: Make tests for logging in. Test both successful and unsuccessful login attempts. Make a new user in the beforeEach block for the tests.
 
 ## step 3: Make a test which checks that a logged in user can create a new blog.
+
+## step 4: Make a test which checks that a logged in user can like a blog.

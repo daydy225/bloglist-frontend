@@ -30,9 +30,12 @@ const Blog = ({ blog, update, deleteBlog, user }) => {
         <button onClick={handleView}>{blogVisible ? 'hide' : 'view'}</button>
       </div>
 
-      <div style={blogVisible ? { display: '' } : { display: 'none' }} className="blogContent">
+      <div
+        style={blogVisible ? { display: '' } : { display: 'none' }}
+        className="blogContent"
+      >
         <div>{blog.url}</div>
-        <div>
+        <div data-test="like-count">
           likes
           {blog.likes}{' '}
           <button
