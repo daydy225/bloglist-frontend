@@ -31,12 +31,13 @@ const BlogForm = ({ addBlog }) => {
 
   return (
     <div>
-      <h2>Create new</h2>
+      <h2 data-test="create-new-title">Create new</h2>
       <div>
         <form onSubmit={createBlog}>
           <div>
             title:
             <input
+              data-test="title-input"
               type="text"
               name="Title"
               value={title}
@@ -47,6 +48,7 @@ const BlogForm = ({ addBlog }) => {
           <div>
             author:
             <input
+              data-test="author-input"
               type="text"
               name="Author"
               value={author}
@@ -57,6 +59,7 @@ const BlogForm = ({ addBlog }) => {
           <div>
             url:
             <input
+              data-test="url-input"
               type="text"
               name="Url"
               value={url}
@@ -64,7 +67,9 @@ const BlogForm = ({ addBlog }) => {
               onChange={handleUrlChange}
             />
           </div>
-          <button type="submit">create</button>
+          <button data-test="create-button" type="submit">
+            create
+          </button>
         </form>
       </div>
     </div>

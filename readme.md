@@ -36,4 +36,6 @@
 # bloglist end to end testing
 ## step 1: Configure Cypress for your project. Make a test for checking that the application displays the login form by default.
 
-## step 2: Make tests for logging in. Test both successful and unsuccessful login attempts. Make a new user in the beforeEach block for the tests.  
+## step 2: Make tests for logging in. Test both successful and unsuccessful login attempts. Make a new user in the beforeEach block for the tests.
+
+## step 3: Make a test which checks that a logged in user can create a new blog.

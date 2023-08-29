@@ -36,6 +36,7 @@ module.exports = {
     'object-curly-spacing': ['error', 'always'],
 
     'arrow-spacing': ['error', { before: true, after: true }],
+    'implicit-arrow-linebreak': 'off',
 
     'no-console': 0,
     'no-alert': 0,
