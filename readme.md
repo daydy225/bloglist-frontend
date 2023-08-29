@@ -45,3 +45,5 @@
 ## step 5: Make a test which checks that a logged in user can delete a blog they created.
 
 ## step 6: Make test for ensuring that only the creator can see the delete button of a blog, not anyone else.
+
+## step 7: Make a test for checking that the blogs are ordered according to likes with the blog with the most likes being first.
